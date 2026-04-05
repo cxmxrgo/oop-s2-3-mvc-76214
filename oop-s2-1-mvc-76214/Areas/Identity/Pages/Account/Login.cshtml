@@ -1,0 +1,69 @@
+@page
+@model LoginModel
+@{
+    ViewData["Title"] = "Log in";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="row">
+    <div class="col-md-5">
+        <section>
+            <form id="account" method="post">
+                <h2>Use a local account</h2>
+                <hr />
+                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                    <label asp-for="Input.Email" class="form-label">Email</label>
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="password" />
+                    <label asp-for="Input.Password" class="form-label">Password</label>
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="checkbox mb-3">
+                    <label asp-for="Input.RememberMe" class="form-label">
+                        <input class="form-check-input" asp-for="Input.RememberMe" />
+                        @Html.DisplayNameFor(m => m.Input.RememberMe)
+                    </label>
+                </div>
+                <div>
+                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
+                </div>
+            </form>
+        </section>
+    </div>
+    <div class="col-md-7">
+        <section>
+            <h2>Test Accounts</h2>
+            <p class="text-muted">For testing in local development only.</p>
+            <div class="table-responsive">
+                <table class="table table-sm table-striped">
+                    <thead>
+                        <tr>
+                            <th>Role</th>
+                            <th>Email</th>
+                            <th>Password</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Administrator</td><td>admin@vgc.ie</td><td>Admin123!</td></tr>
+                        <tr><td>Faculty</td><td>aoife.murphy@vgc.ie</td><td>Faculty123!</td></tr>
+                        <tr><td>Faculty</td><td>liam.kelly@vgc.ie</td><td>Faculty123!</td></tr>
+                        <tr><td>Student</td><td>john.rowley@vgc.ie</td><td>Student123!</td></tr>
+                        <tr><td>Student</td><td>bernard.roche@vgc.ie</td><td>Student123!</td></tr>
+                        <tr><td>Student</td><td>seamus.hickey@vgc.ie</td><td>Student123!</td></tr>
+                        <tr><td>Student</td><td>david.keane@vgc.ie</td><td>Student123!</td></tr>
+                        <tr><td>Student</td><td>rod.haanappel@vgc.ie</td><td>Student123!</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

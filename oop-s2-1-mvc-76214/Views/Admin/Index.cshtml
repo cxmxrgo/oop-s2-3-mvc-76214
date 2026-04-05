@@ -1,0 +1,21 @@
+@model oop_s2_1_mvc_76214.Models.ViewModels.AdminDashboardViewModel
+@{
+    ViewData["Title"] = "Administrator Dashboard";
+}
+
+<h1>Administrator Dashboard</h1>
+
+<div class="row g-3 mt-1">
+    <div class="col-md-3">
+        <div class="card"><div class="card-body"><h6>Branches</h6><p class="fs-4">@Model.BranchCount</p></div></div>
+    </div>
+    <div class="col-md-3">
+        <div class="card"><div class="card-body"><h6>Courses</h6><p class="fs-4">@Model.CourseCount</p></div></div>
+    </div>
+    <div class="col-md-3">
+        <div class="card"><div class="card-body"><h6>Students</h6><p class="fs-4">@Model.StudentCount</p></div></div>
+    </div>
+    <div class="col-md-3">
+        <div class="card"><div class="card-body"><h6>Faculty</h6><p class="fs-4">@Model.FacultyCount</p></div></div>
+    </div>
+</div>

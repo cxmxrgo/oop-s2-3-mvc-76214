@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>aspnet-oop_s2_1_mvc_76214-9f200b7c-b656-4cf2-9c30-37e36092d185</UserSecretsId>
+    <RootNamespace>oop_s2_1_mvc_76214</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="9.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="9.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="9.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.5" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\Migrations\" />
+  </ItemGroup>
+
+</Project>

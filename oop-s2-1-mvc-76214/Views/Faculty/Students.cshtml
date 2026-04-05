@@ -1,0 +1,28 @@
+@model IEnumerable<oop_s2_1_mvc_76214.Models.ViewModels.FacultyStudentViewModel>
+@{
+    ViewData["Title"] = "Course Students";
+}
+
+<h1>@ViewBag.CourseName - Students</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Student #</th>
+            <th>Email</th>
+            <th>Phone</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var student in Model)
+    {
+        <tr>
+            <td>@student.StudentName</td>
+            <td>@student.StudentNumber</td>
+            <td>@student.Email</td>
+            <td>@student.Phone</td>
+        </tr>
+    }
+    </tbody>
+</table>
