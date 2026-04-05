@@ -1,0 +1,39 @@
+@model IEnumerable<oop_s2_1_mvc_76214.Models.ViewModels.StudentAttendanceRecordViewModel>
+@{
+    ViewData["Title"] = "My Attendance";
+}
+
+<h1>My Attendance</h1>
+
+<p>
+    <a asp-action="Index" class="btn btn-outline-secondary">Back to Dashboard</a>
+</p>
+
+@if (!Model.Any())
+{
+    <p>No attendance records available yet.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Course</th>
+                <th>Week</th>
+                <th>Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.CourseName</td>
+                <td>@item.WeekNumber</td>
+                <td>@item.AttendanceDate.ToString("yyyy-MM-dd")</td>
+                <td>@(item.Present ? "Present" : "Absent")</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}

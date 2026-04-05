@@ -1,0 +1,38 @@
+@model oop_s2_1_mvc_76214.Models.StudentProfile
+@{
+    ViewData["Title"] = "Student Profile Details";
+}
+
+<h1>Student Profile Details</h1>
+
+<div class="card">
+    <div class="card-body">
+        <dl class="row mb-0">
+            <dt class="col-sm-3">Name</dt>
+            <dd class="col-sm-9">@Model.Name</dd>
+
+            <dt class="col-sm-3">Student Number</dt>
+            <dd class="col-sm-9">@Model.StudentNumber</dd>
+
+            <dt class="col-sm-3">Identity User Id</dt>
+            <dd class="col-sm-9">@Model.IdentityUserId</dd>
+
+            <dt class="col-sm-3">Email</dt>
+            <dd class="col-sm-9">@Model.Email</dd>
+
+            <dt class="col-sm-3">Phone</dt>
+            <dd class="col-sm-9">@Model.Phone</dd>
+
+            <dt class="col-sm-3">Address</dt>
+            <dd class="col-sm-9">@Model.Address</dd>
+
+            <dt class="col-sm-3">Date of Birth</dt>
+            <dd class="col-sm-9">@Model.DOB.ToString("yyyy-MM-dd")</dd>
+        </dl>
+    </div>
+</div>
+
+<p class="mt-3">
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+    <a asp-action="Index" class="btn btn-secondary">Back</a>
+</p>

@@ -1,0 +1,11 @@
+global using System.ComponentModel.DataAnnotations;
+global using System.Security.Claims;
+global using Microsoft.AspNetCore.Http;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.AspNetCore.Mvc.ViewFeatures;
+global using Microsoft.EntityFrameworkCore;
+global using oop_s2_1_mvc_76214.Controllers;
+global using oop_s2_1_mvc_76214.Data;
+global using oop_s2_1_mvc_76214.Models;
+global using oop_s2_1_mvc_76214.Models.ViewModels;
+global using Xunit;

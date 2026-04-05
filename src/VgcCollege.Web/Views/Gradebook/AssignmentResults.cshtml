@@ -1,0 +1,66 @@
+@model oop_s2_1_mvc_76214.Models.ViewModels.AssignmentResultsViewModel
+@{
+    ViewData["Title"] = "Assignment Results";
+}
+
+@if (TempData["StatusMessage"] is string statusMessage)
+{
+    <div class="alert alert-success">@statusMessage</div>
+}
+
+<h1>Assignment Gradebook</h1>
+<p class="text-muted">@Model.CourseName - @Model.AssignmentTitle (Max: @Model.MaxScore.ToString("0.##"))</p>
+<p class="text-muted">Allowed score range: 0-100</p>
+
+<form asp-action="AssignmentResults" method="post">
+    <input asp-for="AssignmentId" type="hidden" />
+    <input asp-for="CourseId" type="hidden" />
+    <input asp-for="CourseName" type="hidden" />
+    <input asp-for="AssignmentTitle" type="hidden" />
+    <input asp-for="MaxScore" type="hidden" />
+
+    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+    <div class="table-responsive">
+    <table class="table table-striped table-hover align-middle">
+        <thead>
+            <tr>
+                <th>Student</th>
+                <th>Student #</th>
+                <th>Score</th>
+                <th>Feedback</th>
+            </tr>
+        </thead>
+        <tbody>
+        @for (var i = 0; i < Model.Students.Count; i++)
+        {
+            <tr>
+                <td>
+                    @Model.Students[i].StudentName
+                    <input asp-for="Students[i].StudentProfileId" type="hidden" />
+                    <input asp-for="Students[i].StudentName" type="hidden" />
+                </td>
+                <td>
+                    @Model.Students[i].StudentNumber
+                    <input asp-for="Students[i].StudentNumber" type="hidden" />
+                </td>
+                <td>
+                    <input asp-for="Students[i].Score" asp-format="{0:0.##}" class="form-control" type="number" min="0" max="100" step="0.01" />
+                    <span asp-validation-for="Students[i].Score" class="text-danger"></span>
+                </td>
+                <td>
+                    <input asp-for="Students[i].Feedback" class="form-control" />
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Results</button>
+    <a asp-action="Assignments" asp-route-courseId="@Model.CourseId" class="btn btn-secondary">Back to Assignments</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

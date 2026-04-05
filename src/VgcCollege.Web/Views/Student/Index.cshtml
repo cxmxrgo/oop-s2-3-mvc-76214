@@ -1,0 +1,58 @@
+@model oop_s2_1_mvc_76214.Models.ViewModels.StudentDashboardViewModel
+@{
+    ViewData["Title"] = "Student Dashboard";
+}
+
+<h1>Student Dashboard</h1>
+
+<p>
+    <a asp-action="Attendance" class="btn btn-outline-primary">View Attendance</a>
+    <a asp-action="Results" class="btn btn-outline-success">View Results</a>
+</p>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Name</h5>
+        <p class="mb-1"><strong>Student #:</strong> @Model.StudentNumber</p>
+        <p class="mb-1"><strong>Email:</strong> @Model.Email</p>
+        <p class="mb-0"><strong>Phone:</strong> @Model.Phone</p>
+    </div>
+</div>
+
+<h4>Current Courses</h4>
+<ul>
+    @foreach (var course in Model.EnrolledCourses)
+    {
+        <li>@course</li>
+    }
+</ul>
+
+<h4>Released Exam Results</h4>
+@if (!Model.ReleasedExamResults.Any())
+{
+    <p>No released exam results yet.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Course</th>
+                <th>Exam</th>
+                <th>Score</th>
+                <th>Grade</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var result in Model.ReleasedExamResults)
+        {
+            <tr>
+                <td>@result.CourseName</td>
+                <td>@result.ExamTitle</td>
+                <td>@result.Score</td>
+                <td>@result.Grade</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}

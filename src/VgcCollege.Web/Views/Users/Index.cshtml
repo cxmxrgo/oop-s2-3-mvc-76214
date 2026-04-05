@@ -1,0 +1,45 @@
+@model IEnumerable<oop_s2_1_mvc_76214.Models.ViewModels.UserListItemViewModel>
+@{
+    ViewData["Title"] = "User Management";
+}
+
+@if (TempData["StatusMessage"] is string statusMessage)
+{
+    <div class="alert alert-info">@statusMessage</div>
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="mb-0">User Management</h1>
+    <a asp-action="Create" class="btn btn-primary">Create User</a>
+</div>
+
+<div class="table-responsive">
+<table class="table table-striped table-hover align-middle">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Username</th>
+            <th>Roles</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Email</td>
+            <td>@item.UserName</td>
+            <td>@(item.Roles.Any() ? string.Join(", ", item.Roles) : "No role")</td>
+            <td>
+                <a asp-action="EditRole" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary">Edit Role</a>
+                <form asp-action="Delete" method="post" class="d-inline">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="id" value="@item.Id" />
+                    <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+</div>

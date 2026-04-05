@@ -1,0 +1,76 @@
+@model oop_s2_1_mvc_76214.Models.ViewModels.FacultyAttendanceViewModel
+@{
+    ViewData["Title"] = "Attendance";
+}
+
+<h1>Attendance - @Model.CourseName</h1>
+
+@if (TempData["StatusMessage"] is string statusMessage)
+{
+    <div class="alert alert-success">@statusMessage</div>
+}
+
+<form asp-action="Attendance" method="get" class="row g-2 mb-3">
+    <input type="hidden" name="courseId" value="@Model.CourseId" />
+    <div class="col-auto">
+        <label class="form-label" for="weekNumber">Week</label>
+        <input id="weekNumber" name="weekNumber" type="number" min="1" max="52" value="@Model.WeekNumber" class="form-control" />
+    </div>
+    <div class="col-auto align-self-end">
+        <button type="submit" class="btn btn-outline-primary">Load Week</button>
+    </div>
+</form>
+
+<form asp-action="Attendance" method="post">
+    <input asp-for="CourseId" type="hidden" />
+    <input asp-for="CourseName" type="hidden" />
+
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <label asp-for="WeekNumber" class="form-label"></label>
+            <input asp-for="WeekNumber" class="form-control" min="1" max="52" />
+            <span asp-validation-for="WeekNumber" class="text-danger"></span>
+        </div>
+        <div class="col-md-3">
+            <label asp-for="AttendanceDate" class="form-label"></label>
+            <input asp-for="AttendanceDate" class="form-control" />
+            <span asp-validation-for="AttendanceDate" class="text-danger"></span>
+        </div>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Student #</th>
+                <th>Present</th>
+            </tr>
+        </thead>
+        <tbody>
+        @for (var i = 0; i < Model.Students.Count; i++)
+        {
+            <tr>
+                <td>
+                    @Model.Students[i].StudentName
+                    <input asp-for="Students[i].StudentName" type="hidden" />
+                </td>
+                <td>
+                    @Model.Students[i].StudentNumber
+                    <input asp-for="Students[i].StudentNumber" type="hidden" />
+                </td>
+                <td>
+                    <input asp-for="Students[i].Present" class="form-check-input" />
+                    <input asp-for="Students[i].CourseEnrolmentId" type="hidden" />
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+    <button type="submit" class="btn btn-primary">Save Attendance</button>
+    <a asp-action="Students" asp-route-courseId="@Model.CourseId" class="btn btn-secondary">Back to Students</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

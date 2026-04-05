@@ -1,3 +1,4 @@
 <Solution>
-  <Project Path="oop-s2-1-mvc-76214/oop-s2-1-mvc-76214.csproj" />
+  <Project Path="src/VgcCollege.Web/oop-s2-1-mvc-76214.csproj" />
+  <Project Path="tests/VgcCollege.Tests/VgcCollege.Tests.csproj" />
 </Solution>

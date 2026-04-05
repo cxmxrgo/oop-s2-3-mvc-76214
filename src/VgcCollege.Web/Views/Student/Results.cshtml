@@ -1,0 +1,69 @@
+@model oop_s2_1_mvc_76214.Models.ViewModels.StudentResultsViewModel
+@{
+    ViewData["Title"] = "My Results";
+}
+
+<h1>My Results</h1>
+<p class="text-muted">@Model.StudentName</p>
+
+<h4>Assignment Results</h4>
+@if (!Model.AssignmentResults.Any())
+{
+    <p>No assignment results yet.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Course</th>
+                <th>Assignment</th>
+                <th>Score</th>
+                <th>Feedback</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var result in Model.AssignmentResults)
+        {
+            <tr>
+                <td>@result.CourseName</td>
+                <td>@result.AssignmentTitle</td>
+                <td>@result.Score / @result.MaxScore</td>
+                <td>@result.Feedback</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+<h4>Released Exam Results</h4>
+@if (!Model.ReleasedExamResults.Any())
+{
+    <p>No released exam results yet.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Course</th>
+                <th>Exam</th>
+                <th>Score</th>
+                <th>Grade</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var result in Model.ReleasedExamResults)
+        {
+            <tr>
+                <td>@result.CourseName</td>
+                <td>@result.ExamTitle</td>
+                <td>@result.Score</td>
+                <td>@result.Grade</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+<a asp-action="Index" class="btn btn-outline-secondary">Back to Dashboard</a>

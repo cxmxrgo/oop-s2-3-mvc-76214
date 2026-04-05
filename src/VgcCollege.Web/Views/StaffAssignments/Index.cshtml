@@ -1,0 +1,44 @@
+@model IEnumerable<oop_s2_1_mvc_76214.Models.ViewModels.StaffAssignmentListItemViewModel>
+@{
+    ViewData["Title"] = "Staff Assignments";
+}
+
+@if (TempData["StatusMessage"] is string statusMessage)
+{
+    <div class="alert alert-info">@statusMessage</div>
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="mb-0">Staff Assignments</h1>
+    <a asp-action="Create" class="btn btn-primary">New Assignment</a>
+</div>
+
+<table class="table table-striped table-hover align-middle">
+    <thead>
+        <tr>
+            <th>Course</th>
+            <th>Branch</th>
+            <th>Faculty</th>
+            <th>Email</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.CourseName</td>
+            <td>@item.BranchName</td>
+            <td>@item.FacultyName</td>
+            <td>@item.FacultyEmail</td>
+            <td>
+                <form asp-action="Delete" method="post" class="d-inline">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="id" value="@item.Id" />
+                    <button type="submit" class="btn btn-sm btn-outline-danger">Remove</button>
+                </form>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

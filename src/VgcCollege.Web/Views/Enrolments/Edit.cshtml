@@ -1,0 +1,46 @@
+@model oop_s2_1_mvc_76214.Models.ViewModels.EnrolmentUpsertViewModel
+@{
+    ViewData["Title"] = "Edit Enrolment";
+}
+
+<h1>Edit Enrolment</h1>
+
+<div class="card shadow-sm">
+<div class="card-body">
+<form asp-action="Edit" method="post">
+    <input asp-for="Id" type="hidden" />
+    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="StudentProfileId" class="form-label"></label>
+        <select asp-for="StudentProfileId" asp-items="Model.Students" class="form-select"></select>
+        <span asp-validation-for="StudentProfileId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="CourseId" class="form-label"></label>
+        <select asp-for="CourseId" asp-items="Model.Courses" class="form-select"></select>
+        <span asp-validation-for="CourseId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="EnrolDate" class="form-label"></label>
+        <input asp-for="EnrolDate" class="form-control" />
+        <span asp-validation-for="EnrolDate" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Status" class="form-label"></label>
+        <input asp-for="Status" class="form-control" />
+        <span asp-validation-for="Status" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
+</div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

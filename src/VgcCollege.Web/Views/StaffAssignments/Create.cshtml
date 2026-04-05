@@ -1,0 +1,37 @@
+@model oop_s2_1_mvc_76214.Models.ViewModels.StaffAssignmentUpsertViewModel
+@{
+    ViewData["Title"] = "Create Staff Assignment";
+}
+
+<h1>Create Staff Assignment</h1>
+
+<div class="card shadow-sm">
+<div class="card-body">
+<form asp-action="Create" method="post">
+    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="CourseId" class="form-label"></label>
+        <select asp-for="CourseId" asp-items="Model.Courses" class="form-select">
+            <option value="">Select course</option>
+        </select>
+        <span asp-validation-for="CourseId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="FacultyProfileId" class="form-label"></label>
+        <select asp-for="FacultyProfileId" asp-items="Model.FacultyMembers" class="form-select">
+            <option value="">Select faculty member</option>
+        </select>
+        <span asp-validation-for="FacultyProfileId" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
+</div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
